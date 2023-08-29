@@ -1,16 +1,20 @@
 server:
   port: 9090
 spring:
+  cloud:
+    openfeign:
+      oauth2:
+        enabled: true
+        registrationClientId: taco-admin-client
   security:
     oauth2:
       client:
         provider:
           tacocloud:
-            issuerUri: "http://localhost:9000"
-            authorizationUri: "http://localhost:9000/authorize"
-            tokenUri: "http://localhost:9000/token"
-            jwkSetUri: "http://localhost:9000/jwks"
-            userInfoUri: "http://localhost:9000/userinfo"
+            authorizationUri: http://authserver:9000/oauth2/authorize
+            tokenUri: http://authserver:9000/oauth2/token
+            userInfoUri: http://authserver:9000/userinfo
+            jwkSetUri: http://authserver:9000/oauth2/jwks
             userNameAttribute: sub
         registration:
           taco-admin-client:
@@ -18,5 +22,5 @@ spring:
             clientId: taco-admin-client
             clientSecret: secret
             authorizationGrantType: authorization_code
-            redirectUri: "http://localhost:9090/login/oauth2/code/{registrationId}"
-            scope: writeIngredients,deleteIngredients,openid
+            redirectUri: "http://localhost:9090/login/oauth2/code/taco-admin-client"
+            scope: writeIngredients,deleteIngredients,openid,profile
