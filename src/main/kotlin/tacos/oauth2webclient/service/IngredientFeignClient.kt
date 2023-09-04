@@ -10,8 +10,7 @@ import tacos.oauth2webclient.entity.Ingredient
 
 @FeignClient(
     name = "IngredientClient",
-    url = "http://localhost:8080/api/ingredients",
-    configuration = [IngredientFeignConfig::class]
+    url = "http://localhost:8080/api/ingredients"
 )
 interface IngredientFeignClient : IngredientRest {
 

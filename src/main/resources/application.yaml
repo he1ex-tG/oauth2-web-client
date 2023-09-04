@@ -1,11 +1,10 @@
 server:
   port: 9090
+feign:
+  oauth2:
+    enabled: true
+    clientRegistrationId: taco-admin-client
 spring:
-  cloud:
-    openfeign:
-      oauth2:
-        enabled: true
-        registrationClientId: taco-admin-client
   security:
     oauth2:
       client:
@@ -23,4 +22,7 @@ spring:
             clientSecret: secret
             authorizationGrantType: authorization_code
             redirectUri: "http://localhost:9090/login/oauth2/code/taco-admin-client"
-            scope: writeIngredients,deleteIngredients,openid,profile
+            scope:
+              - writeIngredients
+              - deleteIngredients
+              - openid
