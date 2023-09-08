@@ -9,20 +9,21 @@ spring:
     oauth2:
       client:
         provider:
-          tacocloud:
-            authorizationUri: http://authserver:9000/oauth2/authorize
-            tokenUri: http://authserver:9000/oauth2/token
-            userInfoUri: http://authserver:9000/userinfo
-            jwkSetUri: http://authserver:9000/oauth2/jwks
+          taco-authorization-server:
+            authorizationUri: http://authserver:9000/oauth2/v1/authorize
+            tokenUri: http://authserver:9000/oauth2/v1/token
+            userInfoUri: http://authserver:9000/connect/v1/userinfo
+            jwkSetUri: http://authserver:9000/oauth2/v1/jwks
             userNameAttribute: sub
         registration:
           taco-admin-client:
-            provider: tacocloud
+            provider: taco-authorization-server
             clientId: taco-admin-client
-            clientSecret: secret
+            clientSecret: taco-admin-client
             authorizationGrantType: authorization_code
-            redirectUri: "http://localhost:9090/login/oauth2/code/taco-admin-client"
+            redirectUri: http://localhost:9090/login/oauth2/code/taco-admin-client
+            clientName: Taco authorization server
             scope:
-              - writeIngredients
-              - deleteIngredients
+              - write:ingredients
+              - delete:ingredients
               - openid

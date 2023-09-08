@@ -11,7 +11,7 @@ class SecurityConfig {
 
     @Bean
     fun defaultSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
-        http.invoke {
+        http {
             authorizeHttpRequests {
                 authorize(anyRequest, authenticated)
             }
