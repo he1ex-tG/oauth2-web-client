@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taco Ingredients admin</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+    <h1>Taco Ingredients admin</h1>
+    <div>
+        <ul>
+            <li th:each="ingredient : ${ingredients}">
+                <span th:text="${ingredient.name}+' (id: '+${ingredient.id}+', type: '+${ingredient.type}+')'"></span>
+            </li>
+        </ul>
+    </div>
+    <form method="post" th:action="@{/web/ingredients}" th:object="${newIngredient}">
+        <label for="ingredientId">ID:</label>
+            <input type="text" th:field="*{id}" id="ingredientId" placeholder="QQQQ">
+        <label for="ingredientName">Name:</label>
+            <input type="text" th:field="*{name}" id="ingredientName" placeholder="Новый ингр ёпта">
+        <input type="submit" value="Add Ingredient">
+    </form>
+</body>
+</html>
