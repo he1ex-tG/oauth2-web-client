@@ -1,9 +1,9 @@
 package tacos.oauth2webclient.entity
 
 data class Ingredient(
-    val id: String,
-    val name: String,
-    val type: Type,
+    var id: String = "",
+    var name: String = "",
+    var type: Type = Type.WRAP,
 ) {
     enum class Type {
         WRAP,
