@@ -26,6 +26,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 }
 
 val springCloudVersion = "2022.0.1"
