@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import tacos.oauth2webclient.entity.Ingredient
-import tacos.oauth2webclient.service.IngredientFeignClient
+import tacos.oauth2webclient.feign.IngredientsFeignClient
 
 @RestController
 @RequestMapping(path = ["/api/ingredients"], produces = ["application/json"])
-class IngredientRestImpl(
-    val ingredientFeignClient: IngredientFeignClient
-) : IngredientRest {
+class IngredientsRestImpl(
+    val ingredientsFeignClient: IngredientsFeignClient
+) : IngredientsRest {
 
     @GetMapping
     override fun findAll(): List<Ingredient> {
-        return ingredientFeignClient.findAll()
+        return ingredientsFeignClient.findAll()
     }
 
     @PostMapping
     override fun addIngredient(@RequestBody ingredient: Ingredient): Ingredient {
-        return ingredientFeignClient.addIngredient(ingredient)
+        return ingredientsFeignClient.addIngredient(ingredient)
     }
 
     @DeleteMapping("/{id}")
     override fun deleteIngredient(@PathVariable("id") id: String) {
-        return ingredientFeignClient.deleteIngredient(id)
+        return ingredientsFeignClient.deleteIngredient(id)
     }
 }
