@@ -1,4 +1,4 @@
-package tacos.config
+package tacos.oauth2webclient.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
