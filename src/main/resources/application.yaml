@@ -1,29 +1,6 @@
+spring:
+  profiles:
+    include:
+      - secret
 server:
   port: 9090
-feign:
-  oauth2:
-    enabled: true
-    clientRegistrationId: taco-admin-client
-spring:
-  security:
-    oauth2:
-      client:
-        provider:
-          taco-authorization-server:
-            authorizationUri: http://authserver:9000/oauth2/v1/authorize
-            tokenUri: http://authserver:9000/oauth2/v1/token
-            userInfoUri: http://authserver:9000/connect/v1/userinfo
-            jwkSetUri: http://authserver:9000/oauth2/v1/jwks
-            userNameAttribute: sub
-        registration:
-          taco-admin-client:
-            provider: taco-authorization-server
-            clientId: taco-admin-client
-            clientSecret: taco-admin-client
-            authorizationGrantType: authorization_code
-            redirectUri: http://localhost:9090/login/oauth2/code/taco-admin-client
-            clientName: Taco authorization server
-            scope:
-              - write:ingredients
-              - delete:ingredients
-              - openid
